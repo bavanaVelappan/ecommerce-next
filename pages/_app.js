@@ -4,6 +4,7 @@ const MyApp = ({ Component, pageProps }) => {
         <div>
             <Link href='/'>Home</Link>
             <Link href='/aboutus'>Aboout US</Link>
+            <Link href='/products'>Products</Link>
             <Component {...pageProps} />
             <footer>THis is footer</footer>
         </div>
