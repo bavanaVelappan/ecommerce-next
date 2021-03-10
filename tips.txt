@@ -1,0 +1,4 @@
+npm install netlify-cli -g
+npx netlify init
+
+Set-ExecutionPolicy RemoteSigned
