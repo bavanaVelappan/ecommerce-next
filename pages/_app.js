@@ -17,8 +17,6 @@ const Page = styled.div`
     min-height:80vh;
     margin:0 auto;
 `;
-
-
 const MyApp = ({ Component, pageProps }) => {
     return (
         <CartProvider>

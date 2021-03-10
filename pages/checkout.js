@@ -2,6 +2,7 @@ import Page from "../components/styled/page";
 import useCart from "../hooks/useCart";
 import styled from 'styled-components';
 import axios from 'axios';
+import { loadStripe } from "@stripe/stripe-js";
 
 const Item = styled.li`
     list-style:none;
@@ -47,10 +48,16 @@ const Content = styled.div`
 const Checkout = () => {
     const { cart, total } = useCart();
 
-    const processPayment = async() =>{
-        
-        let url ='/.netlify/functions/charge-card';
-        const {data} = await axios.post(url, { cart });
+    const processPayment = async () =>{        
+        const url ='/.netlify/functions/charge-card';
+        const newCart = cart.map(({ id, qty }) => ({
+            id,
+            qty
+        }));
+        const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+        console.log(newCart);
+        const { data } = await axios.post(url, { cart:newCart });
+        await stripe.redirectToCheckout({ sessionId: data.id })
     }
 
     return (
