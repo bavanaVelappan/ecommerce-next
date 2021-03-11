@@ -58,7 +58,7 @@ const renderProduct =(product, addItemToCart, removeItemFromCart) => {
                     <p>{product.description}</p>
                     <Price>${product.price/100}</Price>
                     <Buttons>
-                        <button onClick={handleAddItemToCart}>+</button>
+                        <button onClick={handleAddItemToCart}>+</button>&nbsp;&nbsp;
                         <button onClick={handleRemoveItemFromCart}>-</button>
                     </Buttons>
                 </Container>

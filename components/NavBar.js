@@ -27,9 +27,18 @@ const ShoppingCart = styled(FiShoppingCart)`
         cursor:pointer;
     }
 `;
+const Qty = styled.span`
+    position:absolute;
+    right:0;
+    font-size:1rem;
+    margin-right:30.5rem;
+    top:0;
+    margin-top:1.5rem;
+    font-weight:600;
+`;
 
 const NavBar = () => {
-    const { openCart } = useCart();
+    const { openCart, totalQty } = useCart();
     const handleClick = () => {
         openCart();
     }
@@ -37,12 +46,12 @@ const NavBar = () => {
     return (
         <Nav>
             <NavContainer>
-                <Link href='/'><UnstyledLink>Bavanya Boutique</UnstyledLink></Link>
-                <ShoppingCart onClick={handleClick}/>
+                <Link href='/'>
+                    <UnstyledLink>Bavanya Boutique</UnstyledLink>
+                </Link>
+                <ShoppingCart onClick={handleClick}/><Qty>{totalQty}</Qty>
             </NavContainer>
         </Nav>
     )
 }
-
-
 export default NavBar;

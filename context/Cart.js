@@ -8,6 +8,7 @@ const Cart = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [isOpen, setIsOpen ] = useState(false);
     const [total, setTotal] = useState(0);
+    const [totalQty, setTotalQty] = useState(0);
 
     const openCart = () => {
         setIsOpen(true);
@@ -29,6 +30,11 @@ const Cart = ({ children }) => {
         let newTotal = 0;
         cart.forEach((item) => (newTotal += item.price*item.qty));
         setTotal(newTotal);
+
+        let newTotalQty = 0;
+        cart.forEach((item) => (newTotalQty += item.qty));
+        setTotalQty(newTotalQty);
+
     }, [cart])
 
     const addItemToCart = (product, qty =1) => {
@@ -62,7 +68,8 @@ const Cart = ({ children }) => {
         openCart,
         closeCart,
         total,
-        clearCart
+        clearCart,
+        totalQty
     }
     return <Context.Provider value={exposed}>{children}</Context.Provider>
 }
